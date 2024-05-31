@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloc Notes</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Créer une nouvelle note</h1>
+        <form action="/add-note" method="POST">
+            <div class="form-group">
+                <label for="note">Note :</label>
+                <textarea id="note" name="note" class="form-control" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Ajouter la note</button>
+        </form>
+
+        <h2 class="mt-5">Notes</h2>
+        <ul class="list-group">
+            <% notes.forEach(function(note) { %>
+                <li class="list-group-item"><%= note %></li>
+            <% }); %>
+        </ul>
+    </div>
+</body>
+</html>

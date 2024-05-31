@@ -9,6 +9,7 @@
     <h1>Bonjour <%= user ? `${user.firstname}` : '' %> !</h1>
     <p>
         <% if(user) { %>
+            <a href="/notes">Voir le bloc-notes</a>
             <a href="/logout">Logout</a>
         <% } else { %>
             <a href="/login">Login</a>

@@ -1,6 +1,7 @@
 import { compare } from 'bcrypt'
 
 import { fetchUserByEmail } from '../services/user.service.mjs'
+import { fetchAllNotes } from '../services/notes.service.mjs'
 
 async function handleLogin(req, res) {
     const { app, method } = req
@@ -22,6 +23,24 @@ async function handleLogin(req, res) {
     }
 
     res.redirect('/login')
+}
+
+async function handlaNote(req, res) {
+    const { app, method } = req
+    const db = app.get('g:db')
+
+    if(method == 'GET') { return res.render('notes') }
+
+    const { title, content, owner_id } = req.body
+
+    const notes = await fetchAllNotes(db)
+
+    if(user) {
+        const ok = await compare(title, notes.title)
+        
+    }
+
+    res.redirect('/notes')
 }
 
 async function handleLogout(req, res) {
